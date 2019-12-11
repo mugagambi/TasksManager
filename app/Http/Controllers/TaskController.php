@@ -80,17 +80,21 @@ class TaskController extends Controller
 
         return response()->json([
             'message' => 'Task updated successfully'
-        ],200);
+        ], 200);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified task from storage.
      *
      * @param Task $task
-     * @return Response
+     * @return JsonResponse
+     * @throws \Exception
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return response()->json([
+            'message' => 'Task removed successfully'
+        ], 200);
     }
 }
